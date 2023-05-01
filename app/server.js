@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("../app/models");
-const controller = require("./controllers/tutorial.controller");
+const controller = require("../app/controllers/tutorial.controller");
 
 
 const run = async () => {
@@ -82,6 +82,7 @@ const run = async () => {
 db.sequelize.sync()
     .then(() => {
         console.log("Synced db.");
+        run();
     })
     .catch((err) => {
         console.log("Failed to sync db: " + err.message);
